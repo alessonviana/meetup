@@ -23,7 +23,4 @@
     src: files/docker-compose/docker-compose.yml
     dest: /home/opc/alesson.v/compose-prometheus/
 
-- name: Deploy Docker Compose
-  command: docker-compose -f /home/opc/alesson.v/compose-prometheus/docker-compose.yml up -d
-
 ...

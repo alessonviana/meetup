@@ -15,7 +15,7 @@
   become: yes
   tasks:
   - file:
-      path: "/home/opc/alesson.v/compose-prometheus/"
+      path: "/home/opc/alesson.v/meet_up/"
       state: directory
 
 - name: Install packages
@@ -43,13 +43,6 @@
   roles:
     - docker
   tags: docker
-
-#- name: Install Terraform
-#  hosts: oracle_linux
-#  become: yes
-#  roles:
-#    - terraform
-#  tags: terraform
 
 - name: Install python 3.7
   hosts: oracle_linux
