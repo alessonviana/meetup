@@ -1,0 +1,68 @@
+---
+- name: Configure authorized_keys
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+  - authorized_key:
+      state: present
+      user: opc
+      key: "{{ lookup('file', '{{ item  }}') }}"
+    loop: "{{ lookup('fileglob', 'files/authorized_keys/*.pub', wantlist=True)  }}"
+
+- name: Create a new directory
+  hosts: oracle_linux
+  become: yes
+  tasks:
+  - file:
+      path: "/home/opc/alesson.v/compose-prometheus/"
+      state: directory
+
+- name: Install packages
+  hosts: oracle_linux
+  become: yes
+  roles:
+    - packages
+  tags: packages
+
+- name: Install Locate2
+  hosts: oracle_linux
+  become: yes
+  tasks:
+  - yum:
+      state: present
+      name:
+        mlocate
+  - command: updatedb
+  - command: locate -b '\bash_completion.sh'
+  tags: locate
+
+- name: install docker
+  hosts: oracle_linux
+  become: yes
+  roles:
+    - docker
+  tags: docker
+
+#- name: Install Terraform
+#  hosts: oracle_linux
+#  become: yes
+#  roles:
+#    - terraform
+#  tags: terraform
+
+- name: Install python 3.7
+  hosts: oracle_linux
+  become: yes
+  roles:
+    - python
+  tags: python
+
+- name: Install Docker compose
+  hosts: oracle_linux
+  become: yes
+  ignore_errors: yes
+  roles:
+    - compose
+  tags: compose
+...

@@ -1,0 +1,8 @@
+packages:
+  - vim
+  - git
+  - net-tools
+  - gcc
+  - openssl-devel
+  - bzip2-devel
+  - libffi-devel

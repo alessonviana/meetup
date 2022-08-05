@@ -1,0 +1,5 @@
+[ubuntu]
+
+[oracle_linux]
+129.213.120.150 ansible_ssh_user=opc
+

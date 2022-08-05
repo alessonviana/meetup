@@ -1,0 +1,13 @@
+---
+- name: upgrade all packages
+  yum: name=* state=latest update_cache=yes
+
+- name: Install packages list
+  yum:
+    state: present
+    name: "{{ packages }}"
+...
+
+
+
+
