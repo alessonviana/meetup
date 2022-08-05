@@ -1,3 +1,3 @@
 [oracle_linux]
-150.136.119.187 ansible_ssh_user=opc
+129.213.19.187 ansible_ssh_user=opc
 
