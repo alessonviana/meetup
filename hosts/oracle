@@ -1,3 +1,9 @@
 [oracle_linux]
 129.213.19.187 ansible_ssh_user=opc
 
+[Ununtu]
+
+[servidores:children]
+oracle_linux
+Ununtu
+
